@@ -1,0 +1,93 @@
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --sidebar: #1e293b;
+  --user: #1e40af;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #2563eb;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.layout { display: flex; min-height: 100vh; }
+
+/* Barra lateral */
+.sidebar {
+  width: 275px;
+  flex-shrink: 0;
+  background: var(--sidebar);
+}
+.sidebar__user {
+  background: var(--user);
+  height: 98px;
+  padding: 18px 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.sidebar__nav { display: flex; flex-direction: column; }
+.sidebar__link {
+  padding: 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 17px;
+}
+.sidebar__link:hover { background: rgba(255, 255, 255, 0.05); }
+.sidebar__link--active { background: rgba(37, 99, 235, 0.25); }
+
+/* Zona principal */
+.main { flex: 1; min-width: 0; }
+.topbar {
+  height: 98px;
+  background: var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topbar h1 { margin: 0; font-size: 44px; font-weight: 700; }
+
+.content { padding: 40px 30px; }
+.content h2 { margin: 0 0 20px; font-size: 20px; }
+.muted { color: var(--muted); }
+.lista { list-style: none; padding: 0; display: grid; gap: 12px; }
+.lista li { background: var(--panel); padding: 14px 18px; border-radius: 10px; }
+
+/* Tarjetas */
+.cards { display: flex; flex-wrap: wrap; gap: 20px; }
+.card {
+  width: 300px;
+  background: var(--panel);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.card__img { width: 100%; height: 138px; object-fit: cover; display: block; }
+.card__body { padding: 15px; }
+.card__title { margin: 0 0 6px; font-size: 18px; }
+.card__desc { margin: 0 0 18px; color: var(--muted); font-size: 15px; line-height: 1.35; min-height: 40px; }
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn:hover { background: #1d4ed8; }
+.btn:focus-visible, .sidebar__link:focus-visible { outline: 2px solid #93c5fd; outline-offset: 2px; }
+
+@media (max-width: 700px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; }
+  .sidebar__user { height: auto; }
+  .sidebar__nav { flex-direction: row; }
+  .topbar h1 { font-size: 28px; }
+}
+.content p { margin: 0; font-size: 18px; }
